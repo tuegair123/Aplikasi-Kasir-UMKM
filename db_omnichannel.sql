@@ -1,8 +1,5 @@
--- MySQL dump 10.13  Distrib 8.0.46, for Linux (x86_64)
---
--- Host: localhost    Database: db_omnichannel
--- ------------------------------------------------------
--- Server version	8.0.46
+-- MySQL dump (Versi Bersih / Kosong)
+-- Distrib 8.0.46, for Linux (x86_64)
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -34,18 +31,8 @@ CREATE TABLE `pesanan` (
   PRIMARY KEY (`id`),
   KEY `warung_id` (`warung_id`),
   CONSTRAINT `pesanan_ibfk_1` FOREIGN KEY (`warung_id`) REFERENCES `warung` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `pesanan`
---
-
-LOCK TABLES `pesanan` WRITE;
-/*!40000 ALTER TABLE `pesanan` DISABLE KEYS */;
-INSERT INTO `pesanan` VALUES (4,1,'Pelanggan Langsung','Beras 1Kg (x1), Minyak 1L (x1), Gula Pasir (x1)',49000.00,'pending','belum_dikirim','2026-05-01 11:19:22');
-/*!40000 ALTER TABLE `pesanan` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `produk`
@@ -64,18 +51,8 @@ CREATE TABLE `produk` (
   PRIMARY KEY (`id`),
   KEY `warung_id` (`warung_id`),
   CONSTRAINT `produk_ibfk_1` FOREIGN KEY (`warung_id`) REFERENCES `warung` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `produk`
---
-
-LOCK TABLES `produk` WRITE;
-/*!40000 ALTER TABLE `produk` DISABLE KEYS */;
-INSERT INTO `produk` VALUES (1,1,'Beras Premium 1Kg',15000.00,50,'https://cdn-icons-png.flaticon.com/512/3014/3014491.png'),(2,1,'Minyak Goreng 1L',18000.00,40,'https://cdn-icons-png.flaticon.com/512/811/811408.png'),(3,1,'Gula Pasir 1Kg',16000.00,30,'https://cdn-icons-png.flaticon.com/512/3014/3014526.png'),(4,1,'Tepung Terigu 1Kg',12000.00,20,'https://cdn-icons-png.flaticon.com/512/2884/2884064.png');
-/*!40000 ALTER TABLE `produk` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `warung`
@@ -92,20 +69,10 @@ CREATE TABLE `warung` (
   `alamat` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `warung`
---
-
-LOCK TABLES `warung` WRITE;
-/*!40000 ALTER TABLE `warung` DISABLE KEYS */;
-INSERT INTO `warung` VALUES (1,'Warung Berkah','Bapak Budi','08123456789','Jl. Teknologi No. 1','2026-05-01 11:16:03');
-/*!40000 ALTER TABLE `warung` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
@@ -114,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-05-02  3:51:50
+-- Dump completed (Cleaned)
