@@ -256,5 +256,59 @@ class Home extends BaseController
 
         return view('cetak_nota', $data);
     }
+
+    // --- FITUR SIMPAN DATA (DOWNLOAD CSV) ---
+    public function simpan_csv()
+    {
+        $db = \Config\Database::connect();
+        // Ambil semua data pesanan
+        $query = $db->table('pesanan')->orderBy('id', 'DESC')->get();
+        $transaksi = $query->getResultArray();
+
+        // Nama file yang akan didownload
+        $filename = 'Laporan_Penjualan_' . date('Ymd_His') . '.csv';
+
+        // Header agar browser tahu ini file CSV
+        header("Content-Description: File Transfer");
+        header("Content-Disposition: attachment; filename=$filename");
+        header("Content-Type: application/csv; "); 
+
+        // Buka file untuk ditulis
+        $file = fopen('php://output', 'w');
+
+        // Tulis baris pertama (Header Kolom)
+        $header = array("ID Transaksi", "Waktu", "Nama Pembeli", "Detail Pesanan", "Total Harga", "Status");
+        fputcsv($file, $header);
+
+        // Tulis data transaksi baris demi baris
+        foreach ($transaksi as $row){
+            $baris = array(
+                $row['id'],
+                $row['created_at'],
+                $row['nama_pembeli'],
+                $row['detail_pesanan'],
+                $row['total_harga'],
+                $row['status_pesanan']
+            );
+            fputcsv($file, $baris);
+        }
+        fclose($file);
+        exit;
+    }
+
+    // --- FITUR MULAI ULANG (RESET DATA) ---
+    public function reset_data()
+    {
+        $db = \Config\Database::connect();
+        
+        // Hapus semua isi tabel pesanan
+        $db->table('pesanan')->emptyTable();
+        
+        // Reset Auto Increment ID kembali ke 1
+        $db->query("ALTER TABLE pesanan AUTO_INCREMENT = 1");
+
+        // Redirect kembali ke halaman laporan dengan pesan sukses
+        return redirect()->back()->with('pesan', 'Data transaksi berhasil direset dari 0!');
+    }
     
 }
