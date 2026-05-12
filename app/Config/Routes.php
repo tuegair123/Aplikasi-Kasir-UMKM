@@ -22,5 +22,3 @@ $routes->post('auth/proses', 'Auth::proses');
 $routes->get('logout', 'Auth::logout');
 // Rute untuk mencetak struk kasir berdasarkan ID Pesanan
 $routes->get('home/cetak_nota/(:num)', 'Home::cetak_nota/$1');
-$routes->get('home/simpan_csv', 'Home::simpan_csv');
-$routes->get('home/reset_data', 'Home::reset_data');
